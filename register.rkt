@@ -18,10 +18,8 @@
 (define (register stack usuario contrasena)
   (if (noEsta? stack usuario);
       (cons (list usuario contrasena) lista)
-      "Usuario ya registrado"))
+      stack))
       
 ;(noEsta? (list (list "Nicolas" 123) (list "Tania" 12) (list "Pedro" 98) (list "Jax" 87)) "Nicolas")
 (define lista (list (list "Nicolas" "123") (list "Tania" "12") (list "Pedro" "98") (list "Jax" "87")))
 (register lista "Nicolas" "123")
-;(getContrasena (list "Nicola" "123"))
-;;
