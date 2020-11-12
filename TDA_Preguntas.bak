@@ -1,0 +1,9 @@
+#lang racket
+; ------------------------------- Preguntas -------------------------------
+
+; ----------- Constructores -----------
+
+; pregunta = lista(lista(votos) lista(respuestas) entero_1 lista(etiquetas) string(titulo) string(contenido) lista(fecha) lista(ultima_actividad) string(autor) entero_estado entero_recompensa)
+
+
+; preguntas = lista(pregunta) ------ Definición: lista que contiene las preguntas echas por todos los usuarios registrados 

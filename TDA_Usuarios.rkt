@@ -23,17 +23,17 @@
 (define (reputacion usuario)(car (cdr usuario))) ; Descripcion: Funcion creada para obtener la reputación del usuario ---------- Dom: lista(string1 entero) ---------- Recorrido: entero
 
 ; Para usuarios:
-(define (usuario usuarios)(car usuarios))
+(define (usuario stack_usuarios)(car stack_usuarios)) ; Descripcion: Funcion creada para obtener el primer usuario de una lista de usuarios ---------- Dom: lista(usuarios) ---------- Recorrido: usuario
 
 ; Funciones específicas:
-(define (getNombre usuarios)(nombre (credencial (usuario usuarios))))
-(define (getContrasena usuarios)(contrasena (credencial (usuario usuarios))))
-(define (getCredencial usuarios)(credencial (usuario usuarios)))
-(define (getReputacion usuarios)(reputacion (usuario usuarios)))
+(define (getNombre stack_usuarios)(nombre (credencial (usuario stack_usuarios)))) ; Descripcion: Funcion creada para obtener el nombre del primer usuario de una lista de usuarios ---------- Dom: lista(usuarios) ---------- Recorrido: string
+(define (getContrasena stack_usuarios)(contrasena (credencial (usuario stack_usuarios)))) ; Descripcion: Funcion creada para obtener la contraseña del primer usuario de una lista de usuarios ---------- Dom: lista(usuarios) ---------- Recorrido: string
+(define (getCredencial stack_usuarios)(credencial (usuario stack_usuarios))) ; Descripcion: Funcion creada para obtener la credencial del primer usuario en una lista de usuarios ---------- Dom: lista(usuarios) ---------- Recorrido: lista(credencial)
+(define (getReputacion stack_usuarios)(reputacion (usuario stack_usuarios))) ; Descripcion: Funcion creada para obtener la reputacion del primer usuario en una lista de usuarios ---------- Dom: lista(usuarios) ---------- Recorrido: entero
 
 ; ----------- Pertenencias -----------
 ; Para listas vacías
-(define (vacioU? lista)
+(define (vacioU? lista) 
   (if (null? lista)
       #t
       #f))
@@ -51,15 +51,24 @@
       #f))
 
 ; Para usuarios:
-(define (usuarios? usuarioss)
-  (if (vacioU? usuarioss)
+(define (usuarios? stack_usuarios)
+  (if (vacioU? stack_usuarios)
       #t
-      (if (usuario? (usuario usuarioss))
-          (usuarios? (cdr usuarioss))
+      (if (usuario? (usuario stack_usuarios))
+          (usuarios? (cdr stack_usuarios))
           #f)))
 
+; Funciones importadas:
+(provide getNombre)
+(provide getContrasena)
+(provide getCredencial)
+(provide getReputacion)
+(provide credencial?)
+(provide usuario?)
+(provide usuarios?)
+
 ; --------------------------------------------------------------------------------------------------------------------------------------------
-(define lista (list (list (list "Nicolas" "123") 12) (list (list "Tania" "12") 23) (list (list "Pedro" "98") 76) (list (list "Jax" "87") 98)))
+;(define lista (list (list (list "Nicolas" "123") 12) (list (list "Tania" "12") 23) (list (list "Pedro" "98") 76) (list (list "Jax" "87") 98)))
 ;(getNombre lista)
 ;(getContrasena lista)
 ;(getReputacion lista)
