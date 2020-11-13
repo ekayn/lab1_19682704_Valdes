@@ -4,5 +4,7 @@ Avance funcion "register" (no terminada)
 no terminada
 # Creacion TDA para usuarios
 no oficial
-# Creacion TDA par preguntas
+# Creacion TDA para preguntas
 no oficial
+# Creacion TDA para respuestas
+no oficial, creacion funciones globales

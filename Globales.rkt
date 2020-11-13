@@ -1,0 +1,15 @@
+#lang racket
+; ------------------------------- Funciones usadas como globales -------------------------------
+
+(define (vacio? lista)
+  (if (null? lista)
+      #t
+      #f))
+
+(define (len lista contador)
+  (if (vacio? lista)
+      contador
+      (len (cdr lista) (+ contador 1))))
+
+(provide vacio?)
+(provide len)

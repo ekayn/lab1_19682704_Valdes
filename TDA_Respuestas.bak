@@ -1,0 +1,6 @@
+#lang racket
+; ------------------------------- Respuestas -------------------------------
+
+; ----------- Constructores -----------
+
+; respuestas = lista(respuesta) ------ Definición:
