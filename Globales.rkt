@@ -11,5 +11,11 @@
       contador
       (len (cdr lista) (+ contador 1))))
 
+(define (reversed lista1 lista2)
+  (if (null? lista1)
+      lista2
+      (reversed (cdr lista1) (cons (car lista1) lista2))))
+
 (provide vacio?)
 (provide len)
+(provide reversed)

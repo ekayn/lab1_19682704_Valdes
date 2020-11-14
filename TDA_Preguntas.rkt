@@ -1,4 +1,6 @@
 #lang racket
+(require "Globales.rkt")
+
 ; TDA_Usuarios
 ; ------------------------------- Preguntas -------------------------------
 
