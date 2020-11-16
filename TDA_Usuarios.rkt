@@ -67,8 +67,21 @@
           (usuarios? (cdr lista_usuarios))
           #f)))
 
-; --------------------------------------------------------------------------------------------------------------------------------------------
 
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+; Pertenencia específicos:
+(define (usuarioValido? string_usuario lista_usuarios)
+  (if (vacio? lista_usuarios)
+      #t
+      (if (equal? (car (getCredencial_u (car lista_usuarios))) string_usuario)
+          #f
+          (usuarioValido? string_usuario (cdr lista_usuarios)))))
+
+
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 
 (define usuario1(list (list "Usuario1" "contrasena1") (getPreguntas_usuario "Usuario1" listaP (list )) (getRespuestas_usuario "Usuario1" listaR (list )) 10))
 (define usuario2(list (list "Usuario2" "contrasena2") (getPreguntas_usuario "Usuario2" listaP (list )) (getRespuestas_usuario "Usuario2" listaR (list )) 20))
@@ -79,11 +92,17 @@
 (define listaU(list usuario1 usuario2 usuario3 usuario4 usuario5))
 
 
-; --------------------------------------------------------------------------------------------------------------------------------------------
+; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 
-
+(provide getCredencial_u)
+(provide credencial_u?)
+(provide getPreguntas_u)
+(provide getRespuestas_u)
+(provide getReputacion_u)
 (provide usuario?)
 (provide usuarios?)
+(provide usuarioValido?)
 
 (provide listaU)
 

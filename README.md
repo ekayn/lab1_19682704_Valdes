@@ -12,3 +12,5 @@ no oficial, creacion funciones globales
 no oficial, nueva funcion global
 # Avance TDAs
 no oficial
+# Creacion funcion "register" y "login"
+TDAs terminados para uso, falta descripcion
