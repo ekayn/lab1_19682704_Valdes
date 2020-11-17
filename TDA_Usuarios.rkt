@@ -26,7 +26,7 @@
 (define (getRespuestas_u usuario)(car (cdr (cdr usuario)))) ; Descripcion: Funcion creada para obtener las respuestas echas por el usuario ---------- Dom: lista_usuario(list()) ---------- Recorrido: lista_respuestas(list())
 (define (getReputacion_u usuario)(car (cdr (cdr (cdr usuario))))) ; Descripcion: Funcion creada para obtener la reputacion del usuario ---------- Dom: lista_usuario(list()) ---------- Recorrido: entero
 
-                                           
+
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -83,7 +83,7 @@
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
-(define usuario1(list (list "Usuario1" "contrasena1") (getPreguntas_usuario "Usuario1" listaP (list )) (getRespuestas_usuario "Usuario1" listaR (list )) 10))
+(define usuario1(list (list "Usuario1" "contrasena1") (getPreguntas_usuario "Usuario1" listaP (list )) (getRespuestas_usuario "Usuario1" listaR (list )) 1000))
 (define usuario2(list (list "Usuario2" "contrasena2") (getPreguntas_usuario "Usuario2" listaP (list )) (getRespuestas_usuario "Usuario2" listaR (list )) 20))
 (define usuario3(list (list "Usuario3" "contrasena3") (getPreguntas_usuario "Usuario3" listaP (list )) (getRespuestas_usuario "Usuario3" listaR (list )) 30))
 (define usuario4(list (list "Usuario4" "contrasena4") (getPreguntas_usuario "Usuario4" listaP (list )) (getRespuestas_usuario "Usuario4" listaR (list )) 40))
@@ -103,6 +103,8 @@
 (provide usuario?)
 (provide usuarios?)
 (provide usuarioValido?)
+
+(provide getUsuario_usuario)
 
 (provide listaU)
 

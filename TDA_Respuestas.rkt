@@ -22,7 +22,6 @@
       ; entero_recompensa = entero ------ Definición: entero que señala si una respuesta recive recompensa, toma directamente el valor de la recompensa si es dada
 
 
-
 ; ----------- Selectores -----------
 
 
@@ -114,7 +113,7 @@
 
 
 (define (respuesta? lista_respuesta)
-  (if (and (not (vacio? lista_respuesta)) (= (len lista_respuesta 0) 9))
+  (if (and (not (vacio? lista_respuesta)) (= (len lista_respuesta 0) 10))
       (if (and (nombre_r? (getNombre_r lista_respuesta)) (fecha_r? (getFecha_r lista_respuesta)) (ID_r? (getID_r lista_respuesta)) (correlativo_r? (getCorrelativo_r lista_respuesta)) (votos_r? (getVotos_r lista_respuesta)) (estado_r? (getEstado_r lista_respuesta)) (reportes_r? (getReportes_r lista_respuesta)) (respuesta_r? (getRespuesta_r lista_respuesta)) (recompensa_r? (getRecompensa_r lista_respuesta)))
           #t
           #f)

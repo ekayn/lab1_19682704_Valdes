@@ -14,3 +14,5 @@ no oficial, nueva funcion global
 no oficial
 # Creacion funcion "register" y "login"
 TDAs terminados para uso, falta descripcion
+# Creacion funcion "ask", "reward" y "answer"
+Pequeñas modificaciones TDAs, falta descripcion
