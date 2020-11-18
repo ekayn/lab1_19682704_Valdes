@@ -161,6 +161,16 @@
 (provide getRespuestas_usuario)
 (provide getRespuestas_pregunta)
 
+(provide getNombre_r)
+(provide getFecha_r)
+(provide getID_r)
+(provide getCorrelativo_r)
+(provide getVotos_r)
+(provide getEstado_r)
+(provide getReportes_r)
+(provide getRespuesta_r)
+(provide getRecompensa_r)
+
 (provide listaR)
 
 

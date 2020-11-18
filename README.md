@@ -16,3 +16,5 @@ no oficial
 TDAs terminados para uso, falta descripcion
 # Creacion funcion "ask", "reward" y "answer"
 Pequeñas modificaciones TDAs, falta descripcion
+# TDAs terminados, creacion de funcion "accept"
+TDAs terminados, inicio de documentacion
