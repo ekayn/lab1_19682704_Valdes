@@ -1,0 +1,32 @@
+Register: Implementación completa sin problemas, 100% resultados esperados
+	(register stackOverflow "Soy Batman" "zorro no te lo lleves") --- Se Registra sin problemas
+	(register stackOverflow "Pedrito" " Pedrito123") --- Se Registra sin problemas
+	(register stackOverflow "Jose" "xxjosexx1234") --- Se Registra sin problemas
+
+Login: Pruebas echas con las funciones siguientes 
+
+Ask: Implementación completa sin problemas, 100% resultados esperados
+(((login stack "Usuario1" "contrasena1" ask) (list 18 11 2020)) "Mi pregunta 1" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 1") 
+--- Pregunta subida sin problemas
+(((login stack "Usuario2" "contrasena999" ask) (list 18 11 2020)) "Mi pregunta 2" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 2")
+--- Pregunta no subida, contraseña incorrecta
+(((login stack "Usuario333" "contrasena333" ask) (list 18 11 2020)) "Mi pregunta 333" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 333")	
+--- Pregunta no subida, usuario no registrado
+
+Reward: Implementación completa sin problemas, 100% resultados esperados
+(((login stack "Usuario1" "contrasena1" reward) 1) 2) --- Recompensa subida sin problemas
+(((login stack "Usuario2" "contrasena2" reward) 2) 12) --- Recompensa no subida, correlativo no existe
+(((login stack "Usuario generico" "contrasena generica" reward) 99) 99999) --- Recompensa no subida, ID no existe
+
+Answer: Implementación completa sin problemas, 100% resultados esperados
+((((login stack "Usuario1" "contrasena1" answer) (list 25 10 2020)) 6) "Mi respuesta 1") 
+--- Respuesta subida sin problemas
+((((login stack "Usuario2" "contrasena2" answer) (list 25 10 2020)) 1) "Mi respuesta 2") 
+--- Respuesta subida sin problemas
+((((login stack "Usuario generica" "contrasena generica" answer) (list 25 10 2020)) 9999) "Mi respuesta generica")
+--- Respuesta no subida, pregunta 9999 no existe
+
+Accept: Implementación completa sin problemas, 100% resultados esperados
+(((login stack "Usuario1" "contrasena1" accept) 1) 2) --- Recompensa entregada con éxito
+(((login stack "Usuario2" "contrasena2" accept) 5) 999) --- Recompensa no entregada, reputación insuficiente
+(((login stack "Usuario generico" "contrasena generica" accept) 99) 2) --- Recompensa no entregada, usuario no registrado

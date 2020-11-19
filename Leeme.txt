@@ -1,0 +1,68 @@
+1.	Register: 
+	Uso correcto:
+		(register stackOverflow "usuario" "contraseña")
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		Usuario: string con el nombre de usuario
+		Contraseña: string con la contraseña
+	Ejemplo:
+	(register stack "Usuario1" "Contrasena1")
+
+
+2.	Login:
+	Uso correcto:
+		(login stackOverflow “usuario” “contraseña” operacion)
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		Usuario: string con el nombre de usuario
+		Contraseña: string con la contraseña
+		Operación: función currificada que señala la acción que se ejecutara una vez iniciado sesión.
+	Ejemplo:
+		(login stack “Usuario1” “Contrasena1” ask)
+
+
+3.	Ask:
+	Uso correcto:
+		(((ask stackOverflow) fecha) título etiquetas contenido)
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		Fecha: lista que contiene la fecha en la que se sube la pregunta
+		Titulo: string que contiene el título de la pregunta
+		Etiquetas: lista de strings que señalan las etiquetas de la pregunta
+		Contenido: contenido descriptivo de la pregunta
+	Ejemplo usando login:
+		(((login stack "Usuario1" "contrasena1" ask) (list 18 11 2020)) "Mi pregunta 1" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 1")
+
+
+4.	Reward:
+	Uso correcto:
+		(((reward stackOverflow) ID) recompensa)
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		ID: entero que señala la pregunta
+		Recompensa: entero que señala la recompensa que se dará a la pregunta
+	Ejemplo usando login:
+		(((login stack "Usuario1" "contrasena1" reward) 1) 2)
+
+
+5.	Answer:
+	Uso correcto:
+		((((answer stackOverflow) fecha) ID) respuesta)
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		Fecha: lista que contiene la fecha en la que se hace la operación
+		ID: entero que señala la pregunta
+		Respuesta: respuesta con formato descrito en TDA_Respuestas
+	Ejemplo usando login:
+		((((login stack "Usuario1" "contrasena1" answer) (list 25 10 2020)) 6) "Mi respuesta 1")
+
+
+6.	Accept:
+	Uso correcto:
+		(((accept stackOverflow) ID) correlativo)
+	Variables de entrada:
+		stackOverflow: stack con formato descrito en TDA_Stack
+		ID: entero que señala la pregunta
+		Correlativo: entero que señala la respuesta de una pregunta 
+	Ejemplo usando login:
+		(((login stack "Usuario1" "contrasena1" accept) 1) 2)

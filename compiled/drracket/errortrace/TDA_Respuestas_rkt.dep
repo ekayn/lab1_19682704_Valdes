@@ -1,1 +1,1 @@
-("7.8" racket ("0f9e005feac0855bb9695f8ac8588852bb69e4a5" . "a02f0f2c74a6dcf3eb30acc2e3b86801f4430657") #"D:\\Paradigmas\\lab1_19682704_Valdes\\Globales.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
+("7.8" racket ("21d258080540a9664a5aeb62f4edccce3b216de8" . "bab825a37c7bdfdd850180dd32296d260df75ae3") #"D:\\Paradigmas\\lab1_19682704_Valdes\\Globales.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

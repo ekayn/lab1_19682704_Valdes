@@ -18,3 +18,5 @@ TDAs terminados para uso, falta descripcion
 Pequeñas modificaciones TDAs, falta descripcion
 # TDAs terminados, creacion de funcion "accept"
 TDAs terminados, inicio de documentacion
+# Descripción de cada funcion realizada
+retoques a TDAs y funciones en main

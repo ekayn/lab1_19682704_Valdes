@@ -16,7 +16,7 @@
 ; -------------------- Funciones Login --------------------
 
 
-(define (credencialValida? lista_usuarios usuario contrasena)
+(define (credencialValida? lista_usuarios usuario contrasena) ; Definicion: funcion que valida que el usuario y contraseña coinsidan con algun usuario registrado -- Dominio: lista de usuarios, string usuario y string contraseña – Recorrido: true o false
   (if (vacio? lista_usuarios)
       #f
       (if (and (equal? (car (getCredencial_u (car lista_usuarios))) usuario) (equal? (car (cdr (getCredencial_u (car lista_usuarios)))) contrasena))
@@ -27,9 +27,9 @@
 ; -------------------- Funciones ask --------------------
 
 
-(define (agregarPregunta_preguntas lista_preguntas pregunta)(cons pregunta lista_preguntas))
+(define (agregarPregunta_preguntas lista_preguntas pregunta)(cons pregunta lista_preguntas)) ; Definicion: funcion que emtrega una lista con la pregunta registrada -- Dominio: lista de preguntas y lista con formato pregunta – Recorrido: lista actualizada
 
-(define (agregarPregunta_usuarios lista_usuarios usuario pregunta lista)
+(define (agregarPregunta_usuarios lista_usuarios usuario pregunta lista) ; Definicion: funcion que entrega una lista actualizada de usuarios con la respuesta ingresada de forma debida  -- Dominio: lista de usuarios, string usuario, lista con formato pregunta y lista vacia – Recorrido: lista de usuarios actualizada
   (if (vacio? lista_usuarios)
       lista
       (if (equal? (car (getCredencial_u (car lista_usuarios))) usuario)
@@ -164,22 +164,17 @@
 ; -------------------- Register --------------------
 
 
-(define (register lista_stack string_usuario string_contrasena)
+(define (register lista_stack string_usuario string_contrasena) ; Descripción: Función que registra a un usuario --- Dominio: stack, string, string --- Recorrido: stack actualizado
   (if (usuarioValido? string_usuario (getUsuarios_s lista_stack))
       (list (getPreguntas_s lista_stack) (getRespuestas_s lista_stack) (cons (list (list string_usuario string_contrasena) (getPreguntas_usuario string_usuario (getPreguntas_s lista_stack) (list )) (getRespuestas_usuario string_usuario (getRespuestas_s lista_stack) (list )) 0) (getUsuarios_s lista_stack)) "")
       lista_stack))
 
 
-;(register stackOverflow "Soy Batman" "zorro no te lo lleves")
-;(register stackOverflow "Pikachu" "Impactrueno")
-;(register stackOverflow "Usuario1" "Contrasena generica")
-
-
 ; -------------------- Login --------------------
 
 
-(define (login lista_stack usuario contrasena operacion)
-  (if (credencial_u? (list usuario contrasena))
+(define (login lista_stack usuario contrasena operacion) ; Descripción: Función que inicia sesión y retorna la operación ingresada --- Dominio: stack, string, string, operación --- Recorrido: operacion 
+  (if (and (credencial_u? (list usuario contrasena)) (stack? lista_stack))
       (if (credencialValida? (getUsuarios_s lista_stack) usuario contrasena)
           (operacion (list (getPreguntas_s lista_stack) (getRespuestas_s lista_stack) (getUsuarios_s lista_stack) usuario))
           (operacion lista_stack))
@@ -189,21 +184,16 @@
 ; -------------------- ask --------------------
 
 
-(define (ask lista_stack)(lambda (lista_fecha)(lambda (titulo lista_etiquetas contenido)
+(define (ask lista_stack)(lambda (lista_fecha)(lambda (titulo lista_etiquetas contenido) ; Descripción: Función currificada que añade una pregunta al stack --- Dominio: stack, lista, string, lista de strings y string --- Recorrido: stack actualizado
                                                        (if (equal? (getUsuario_s lista_stack) "")
                                                            lista_stack
                                                            (list (agregarPregunta_preguntas (getPreguntas_s lista_stack) (list (list 0 0) (getRespuestas_pregunta (+ 1 (len (getPreguntas_s lista_stack) 0)) listaR (list )) (+ 1 (len (getPreguntas_s lista_stack) 0)) lista_etiquetas titulo contenido lista_fecha (getUsuario_s lista_stack) 1 0 0 (list ))) (getRespuestas_s lista_stack) (agregarPregunta_usuarios (getUsuarios_s lista_stack) (getUsuario_s lista_stack) (list (list 0 0) (getRespuestas_pregunta (+ 1 (len (getPreguntas_s lista_stack) 0)) listaR (list )) (+ 1 (len (getPreguntas_s lista_stack) 0)) lista_etiquetas titulo contenido lista_fecha (getUsuario_s lista_stack) 1 0 0 (list )) (list )) ""))))) 
 
 
-;(((login stack "Usuario1" "contrasena1" ask) (list 18 11 2020)) "Mi pregunta 1" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 1")
-;(((login stack "Usuario2" "contrasena2" ask) (list 20 20 2020)) "Mi pregunta 2" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido 2")
-;(((login stack "Usuario generico" "Contrasena generica" ask) (list 5 8 1997)) "Mi pregunta generica" (list "etiqueta 3" "etiqueta 2" "etiqueta 1") "contenido generico")
-
-
 ; -------------------- reward --------------------
 
 
-(define (reward lista_stack)(lambda (ID_pregunta)(lambda (recompensa)
+(define (reward lista_stack)(lambda (ID_pregunta)(lambda (recompensa) ; Descripción: Función currificada que añade una recompensa retenida a una pregunta --- Dominio: stack, entero y entero --- Recorrido: stack actualizado  
                                                    (if (equal? (getUsuario_s lista_stack) "")
                                                        lista_stack
                                                        (if (<= recompensa (getReputacion_u (getUsuario_usuario (getUsuario_s lista_stack) (getUsuarios_s lista_stack))))
@@ -211,15 +201,10 @@
                                                            (list (getPreguntas_s lista_stack) (getRespuestas_s lista_stack) (getUsuarios_s lista_stack) ""))))))
 
 
-;(((login stack "Usuario1" "contrasena1" reward) 1) 2)
-;(((login stack "Usuario2" "contrasena2" reward) 2) 12)
-;(((login stack "Usuario generico" "contrasena generica" reward) 99) 99999)
-
-
 ; -------------------- answer --------------------
   
 
-(define (answer lista_stack)(lambda (fecha)(lambda (ID_pregunta)(lambda (respuesta)
+(define (answer lista_stack)(lambda (fecha)(lambda (ID_pregunta)(lambda (respuesta) ; Descripción: Función currificada que permite registrar una respuesta a una pregunta en específico --- Dominio: : stack, lista de enteros, entero y string --- Recorrido: stack actualizado 
                                                                   (if (equal? (getUsuario_s lista_stack) "")
                                                                       lista_stack
                                                                       (if (estaIDans? ID_pregunta (getPreguntas_s lista_stack))
@@ -227,25 +212,15 @@
                                                                           (list (getPreguntas_s lista_stack) (getRespuestas_s lista_stack) (getUsuarios_s lista_stack) "")))))))
 
 
-;((((login stack "Usuario1" "contrasena1" answer) (list 25 10 2020)) 6) "Mi respuesta 1")
-;((((login stack "Usuario2" "contrasena2" answer) (list 25 10 2020)) 1) "Mi respuesta 2")
-;((((login stack "Usuario generica" "contrasena generica" answer) (list 25 10 2020)) 9999) "Mi respuesta generica")
-
-
-; -------------------- Funciones accept --------------------
+; -------------------- accept --------------------
   
 
-(define (accept lista_stack)(lambda(ID_pregunta)(lambda (correlativo)
+(define (accept lista_stack)(lambda(ID_pregunta)(lambda (correlativo) ; Descripción: Función currificada que permite otorgar una recompensa a una respuesta y marcarla como aceptada --- Dominio: stack, entero y entero --- Recorrido: stack actualizado 
                                                   (if (equal? (getUsuario_s lista_stack) "")
                                                                       lista_stack
                                                                       (if (estaPregunta_Respuesta_acc? (getPreguntas_usuario (getUsuario_s lista_stack) (getPreguntas_s lista_stack) (list )) ID_pregunta correlativo)
                                                                           (list (getPreguntas_acc (getRespuestas_acc (getRespuestas_s lista_stack) correlativo ID_pregunta (getPreguntas_s lista_stack) (list )) ID_pregunta (getPreguntas_s lista_stack) (list )) (getRespuestas_acc (getRespuestas_s lista_stack) correlativo ID_pregunta (getPreguntas_s lista_stack) (list )) (getUsuarios_acc (getUsuarios_s lista_stack) (getPreguntas_acc (getRespuestas_acc (getRespuestas_s lista_stack) correlativo ID_pregunta (getPreguntas_s lista_stack) (list )) ID_pregunta (getPreguntas_s lista_stack) (list )) (getRespuestas_acc (getRespuestas_s lista_stack) correlativo ID_pregunta (getPreguntas_s lista_stack) (list )) (getUsuario_s lista_stack) (getUsuario_recompensa (getRespuestas_p (getPregunta_ID ID_pregunta (getPreguntas_s lista_stack))) correlativo) (list ) (getRecompensa_P_acc ID_pregunta (getPreguntas_s lista_stack))) "") 
                                                                           (list (getPreguntas_s lista_stack) (getRespuestas_s lista_stack) (getUsuarios_s lista_stack) ""))))))
-
-
-;(((login stack "Usuario1" "contrasena1" accept) 1) 2)
-;(((login stack "Usuario2" "contrasena2" accept) 5) 999)
-;(((login stack "Usuario generico" "contrasena generica" accept) 99) 2)
 
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

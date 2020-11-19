@@ -5,7 +5,7 @@
 ; ------------------------------- Preguntas -------------------------------
 
 
-; ----------- Constructores -----------
+; ----------- Representación -----------
 
 
 ; preguntas = lista(pregunta) ------ Definición: lista que contiene las preguntas echas por todos los usuarios registrados
@@ -26,35 +26,48 @@
       ; lista(recompensas_retenidas) = lista de recompensas retenidas ------ Definición: lista de recompensas retenidas echas por los usuarios a la pregunta, cada recompensa es de la forma lista(usuario recompensa)
 
 
+; ----------- Constructores -----------
+
+
+(define pregunta1(list (list 1 0) (getRespuestas_pregunta 1 listaR (list )) 1 (list "java" "C++" "tipeo" "1") "Titulo 1" "Contenido 1" (list 1 6 2020) "Usuario1" 1 20000 0 (list )))
+(define pregunta2(list (list 2 3) (getRespuestas_pregunta 2 listaR (list )) 2 (list "java" "C++" "tipeo" "2") "Titulo 2" "Contenido 2" (list 2 6 2020) "Usuario2" 1 30000 1 (list )))
+(define pregunta3(list (list 2 1) (getRespuestas_pregunta 3 listaR (list )) 3 (list "java" "C++" "tipeo" "3") "Titulo 3" "Contenido 3" (list 2 6 2020) "Usuario1" 1 30000 5 (list )))
+(define pregunta4(list (list 1 0) (getRespuestas_pregunta 4 listaR (list )) 4 (list "java" "C++" "tipeo" "4") "Titulo 4" "Contenido 4" (list 2 6 2020) "Usuario2" 1 30000 0 (list )))
+(define pregunta5(list (list 0 0) (getRespuestas_pregunta 5 listaR (list )) 5 (list "java" "C++" "tipeo" "5") "Titulo 5" "Contenido 5" (list 2 6 2020) "Usuario2" 1 30000 3 (list )))
+(define pregunta6(list (list 9 7) (getRespuestas_pregunta 6 listaR (list )) 6 (list "java" "C++" "tipeo" "6") "Titulo 6" "Contenido 6" (list 2 6 2020) "Usuario3" 1 30000 2 (list )))
+
+(define listaP(list pregunta1 pregunta2 pregunta3 pregunta4 pregunta5 pregunta6))
+
+
 ; ----------- Selectores -----------
 
 
-(define (getVotos_p pregunta)(car pregunta))
-(define (getRespuestas_p pregunta)(car (cdr pregunta)))
-(define (getID_p pregunta)(car (cdr (cdr pregunta))))
-(define (getEtiquetas_p pregunta)(car (cdr (cdr (cdr pregunta)))))
-(define (getTitulo_p pregunta)(car (cdr (cdr (cdr (cdr pregunta))))))
-(define (getContenido_p pregunta)(car (cdr (cdr (cdr (cdr (cdr pregunta)))))))
-(define (getFecha_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))
-(define (getAutor_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))))
-(define (getEstado_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))))
-(define (getRecompensa_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))))))
-(define (getReporte_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))))))
-(define (getRecompensasR_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))))))))
+(define (getVotos_p pregunta)(car pregunta)) ; Definicion: funcion que entrega los votos a favor y en contra de una pregunta -- Dominio: lista con formato pregunta – Recorrido: lista de enteros
+(define (getRespuestas_p pregunta)(car (cdr pregunta))) ; Definicion: funcion que entrega todas las respuestas publicadas en la pregunta -- Dominio: lista con formato pregunta – Recorrido: lista de respuestas
+(define (getID_p pregunta)(car (cdr (cdr pregunta)))) ; Definicion: funcion que entrega el entero ID que representa la pregunta -- Dominio: lista con formato pregunta – Recorrido: entero ID
+(define (getEtiquetas_p pregunta)(car (cdr (cdr (cdr pregunta))))) ; Definicion: funcion que entrega la lista con las etiquetas de la pregunta -- Dominio: lista con formato pregunta – Recorrido: lista de strings
+(define (getTitulo_p pregunta)(car (cdr (cdr (cdr (cdr pregunta)))))) ; Definicion: funcion que entrega el titulo de la pregunta -- Dominio: lista con formato pregunta – Recorrido: string
+(define (getContenido_p pregunta)(car (cdr (cdr (cdr (cdr (cdr pregunta))))))) ; Definicion: funcion que entrega el contenido de la pregunta -- Dominio: lista con formato pregunta – Recorrido: string
+(define (getFecha_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))) ; Definicion: funcion que entrega la fecha en la que se publico la pregunta -- Dominio: lista con formato pregunta – Recorrido: lista de enteros
+(define (getAutor_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))) ; Definicion: funcion que entrega el usuario que publico la pregunta -- Dominio: lista con formato pregunta – Recorrido: string
+(define (getEstado_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))))) ; Definicion: funcion que entrega el estado de la pregunta -- Dominio: lista con formato pregunta – Recorrido: entero
+(define (getRecompensa_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))))) ; Definicion: funcion que entrega la recompensa que se le da a la mejor respuesta -- Dominio: lista con formato pregunta – Recorrido: entero
+(define (getReporte_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta)))))))))))) ; Definicion: funcion que entrega la cantidad de reportes de spam u ofensivo que tiene la pregunta -- Dominio: lista con formato pregunta – Recorrido: entero
+(define (getRecompensasR_p pregunta)(car (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr pregunta))))))))))))) ; Definicion: funcion que entrega todas las recompensas retenidas de la pregunta -- Dominio: lista con formato pregunta – Recorrido: lista de recompensas retenidas
 
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ; Selectores específicos:
-(define (getPreguntas_usuario usuario preguntas lista)
+(define (getPreguntas_usuario usuario preguntas lista) ; Definicion: funcion que entrega todas las preguntas echas por el usuario ingresado -- Dominio: string, lista de preguntas y lista vacia – Recorrido: lista de preguntas
   (if (vacio? preguntas)
       (reversed lista (list ))
       (if (equal? usuario (getAutor_p (car preguntas)))
           (getPreguntas_usuario usuario (cdr preguntas) (cons (car preguntas) lista))
           (getPreguntas_usuario usuario (cdr preguntas) lista))))
   
-(define (getPregunta_ID ID preguntas)
+(define (getPregunta_ID ID preguntas) ; Definicion: funcion que entrega una lista en especifico señalada con su ID -- Dominio: entero ID y lista de preguntas – Recorrido: lista con formato pregunta
   (if (vacio? preguntas)
       "ERROR CRITICO"
       (if (= ID (getID_p (car preguntas)))
@@ -68,70 +81,73 @@
 ; ----------- Pertenencias -----------
 
 
-(define (votos_p? lista_votos)
+(define (votos_p? lista_votos) ; Definicion: funcion que valida que el dato ingresado sea una lista con dos enteros -- Dominio: lista con dos enteros – Recorrido: true o false
   (if (and (not(vacio? lista_votos)) (= 2 (len lista_votos 0)))
       (if (and (integer? (car lista_votos)) (integer? (car (cdr lista_votos))))
           #t
           #f)
       #f))
 
-(define (ID_p? entero_ID)
+
+(define (ID_p? entero_ID) ; Definicion: funcion que valida que el dato ingresado sea un entero -- Dominio: entero – Recorrido: true o false
   (if (integer? entero_ID)
       #t
       #f))
 
-(define (etiquetas_p? lista_etiquetas)
+
+(define (etiquetas_p? lista_etiquetas) ; Definicion: funcion que valida que el dato ingresado sea una lista de strings -- Dominio: lista de string – Recorrido: true o false
   (if (vacio? lista_etiquetas)
       #t
       (if (string? (car lista_etiquetas))
           (etiquetas_p? (cdr lista_etiquetas))
           #f)))
 
-(define (titulo_p? string_titulo)
+
+(define (titulo_p? string_titulo) ; Definicion: funcion que valida que el dato ingresado sea un string -- Dominio: string – Recorrido: true o false
   (if (string? string_titulo)
       #t
       #f))
 
-(define (contenido_p? string_contenido)
+
+(define (contenido_p? string_contenido) ; Definicion: funcion que valida que el dato ingresado sea un string -- Dominio: string – Recorrido: true o false
   (if (string? string_contenido)
       #t
       #f))
 
-(define (fecha_p? lista_fecha)
+
+(define (fecha_p? lista_fecha) ; Definicion: funcion que valida que el dato ingresado sea una lista con tres enteros -- Dominio: lista con tres enteros – Recorrido: true o false
   (if (and (not(vacio? lista_fecha)) (= (len lista_fecha 0) 3))
       (if (and (integer? (car lista_fecha)) (integer? (car (cdr lista_fecha))) (integer? (car (cdr (cdr lista_fecha)))))
           #t
           #f)
       #f))
 
-(define (ultimaAC_p? lista_UAC)
-  (if (and (not(vacio? lista_UAC)) (= (len lista_UAC 0) 3))
-      (if (and (string? (car lista_UAC)) (string? (car (cdr lista_UAC))) (fecha_p? (car (cdr (cdr lista_UAC)))))
-          #t
-          #f)
-      #f))
 
-(define (autor_p? string_autor)
+(define (autor_p? string_autor) ; Definicion: funcion que valida que el dato ingresado sea un string -- Dominio: string – Recorrido: true o false
   (if (string? string_autor)
       #t
       #f))
 
-(define (estado_p? entero_estado)
+
+(define (estado_p? entero_estado) ; Definicion: funcion que valida que el dato ingresado sea un entero -- Dominio: entero – Recorrido: true o false
   (if (integer? entero_estado)
       #t
       #f))
 
-(define (recompensa_p? entero_recompensa)
+
+(define (recompensa_p? entero_recompensa) ; Definicion: funcion que valida que el dato ingresado sea un entero -- Dominio: entero – Recorrido: true o false
   (if (integer? entero_recompensa)
       #t
       #f))
 
-(define (reporte_p? entero_reporte)
+
+(define (reporte_p? entero_reporte) ; Definicion: funcion que valida que el dato ingresado sea un entero -- Dominio: entero – Recorrido: true o false
   (if (integer? entero_reporte)
       #t
       #f))
 
-(define (recompensaR_p? lista_recompensasR)
+
+(define (recompensaR_p? lista_recompensasR) ; Definicion: funcion que valida que el dato ingresado sea una lista con recompensas retenidas -- Dominio: lista con recompensas retenidas – Recorrido: true o false
       (if (vacio? lista_recompensasR)
           #t
           (if (and (string? (car (car lista_recompensasR))) (integer? (car (cdr (car lista_recompensasR)))))
@@ -139,33 +155,20 @@
               #f)))          
 
 
-(define (pregunta? lista_pregunta)
+(define (pregunta? lista_pregunta) ; Definicion: funcion que valida que el dato ingresado sea pregunta con todos sus elementos correspondientes -- Dominio: lista con formato pregunta  – Recorrido: true o false
   (if (and (not(vacio? lista_pregunta)) (= (len lista_pregunta 0) 12))
       (if (and (votos_p? (getVotos_p lista_pregunta)) (respuestas? (getRespuestas_p lista_pregunta)) (ID_p? (getID_p lista_pregunta)) (etiquetas_p? (getEtiquetas_p lista_pregunta)) (titulo_p? (getTitulo_p lista_pregunta)) (contenido_p? (getContenido_p lista_pregunta)) (fecha_p? (getFecha_p lista_pregunta)) (autor_p? (getAutor_p lista_pregunta)) (estado_p? (getEstado_p lista_pregunta)) (recompensa_p? (getRecompensa_p lista_pregunta)) (reporte_p? (getReporte_p lista_pregunta)) (recompensaR_p? (getRecompensasR_p lista_pregunta)))
           #t
           #f)
       #f))
 
-(define (preguntas? lista_preguntas)
+
+(define (preguntas? lista_preguntas) ; Definicion: funcion que valida que el dato ingresado sea una lista de preguntas -- Dominio: lista de preguntas  – Recorrido: true o false
   (if (vacio? lista_preguntas)
       #t
       (if (pregunta? (car lista_preguntas))
           (preguntas? (cdr lista_preguntas))
           #f)))
-
-
-
-; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-(define pregunta1(list (list 1 0) (getRespuestas_pregunta 1 listaR (list )) 1 (list "java" "C++" "tipeo" "1") "Titulo 1" "Contenido 1" (list 1 6 2020) "Usuario1" 1 20000 0 (list )))
-(define pregunta2(list (list 2 3) (getRespuestas_pregunta 2 listaR (list )) 2 (list "java" "C++" "tipeo" "2") "Titulo 2" "Contenido 2" (list 2 6 2020) "Usuario2" 1 30000 1 (list )))
-(define pregunta3(list (list 2 1) (getRespuestas_pregunta 3 listaR (list )) 3 (list "java" "C++" "tipeo" "3") "Titulo 3" "Contenido 3" (list 2 6 2020) "Usuario1" 1 30000 5 (list )))
-(define pregunta4(list (list 1 0) (getRespuestas_pregunta 4 listaR (list )) 4 (list "java" "C++" "tipeo" "4") "Titulo 4" "Contenido 4" (list 2 6 2020) "Usuario2" 1 30000 0 (list )))
-(define pregunta5(list (list 0 0) (getRespuestas_pregunta 5 listaR (list )) 5 (list "java" "C++" "tipeo" "5") "Titulo 5" "Contenido 5" (list 2 6 2020) "Usuario2" 1 30000 3 (list )))
-(define pregunta6(list (list 9 7) (getRespuestas_pregunta 6 listaR (list )) 6 (list "java" "C++" "tipeo" "6") "Titulo 6" "Contenido 6" (list 2 6 2020) "Usuario3" 1 30000 2 (list )))
-
-(define listaP(list pregunta1 pregunta2 pregunta3 pregunta4 pregunta5 pregunta6))
 
 
 ; -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
